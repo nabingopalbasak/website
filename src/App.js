@@ -9,6 +9,7 @@ import Contact from "./Components/Contact";
 import Aboutus from "./Components/Aboutus";
 import Contactus from "./Components/Contactus";
 import ContactDetails from "./Components/ContactDetails"
+import ContactUseReducer from "./Components/ContactUseReducer";
 
 
 // let activeItem = "home";
@@ -47,6 +48,13 @@ function App() {
             />
             <Menu.Item
               as={Link}
+              to="/contact-reducer"
+              name="contact Reducer"
+              active={activeItem === "contactR"}
+              onClick={(e, { name }) => handleItemClick(name)}
+            />
+            <Menu.Item
+              as={Link}
               to="/contact-details"
               name="contact Details"
               active={activeItem === "contactDetails"}
@@ -68,6 +76,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="about" element={<Aboutus />} />
             <Route path="contact" element={<Contact />} />
+            <Route path="contact-reducer" element={<ContactUseReducer />} />
             <Route path="contact-details" element={<ContactDetails />} />
           </Routes>
         </BrowserRouter>
