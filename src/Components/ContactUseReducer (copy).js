@@ -1,13 +1,14 @@
 import { useState , useEffect , useReducer, useContext } from "react";
 import { Container, Grid, Label, TextArea , Form } from "semantic-ui-react";
 
-// import ContactContext from "../Context/ContactContext";
+import ContactContext from "../Context/ContactContext";
 
 
 
 export default function ContactUseReducer() {
 
-
+    const contactData = useContext(ContactContext)
+    console.log("contactData : ",contactData)
     const initialState = {
         name : "",
         email : "",
@@ -43,7 +44,8 @@ export default function ContactUseReducer() {
         e.preventDefault();
         alert("submit");
         console.log("Submit State : "+JSON.stringify(state),typeof state)
-
+        contactData = state;
+        console.log("contactData submit : ",contactData)
         setIsSubmit(true);
         // you can send the form data to your backend or perform other actions here
       };

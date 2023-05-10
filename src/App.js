@@ -10,7 +10,9 @@ import Aboutus from "./Components/Aboutus";
 import Contactus from "./Components/Contactus";
 import ContactDetails from "./Components/ContactDetails"
 import ContactUseReducer from "./Components/ContactUseReducer";
+import ContactFormik from "./Components/ContactFormik";
 
+import {ContactProvider} from "./Context/ContactContext";
 
 // let activeItem = "home";
 function App() {
@@ -22,85 +24,95 @@ function App() {
 
   return (
     <>
-      <Container>
-        <BrowserRouter>
-          <Menu secondary>
-            <Menu.Item
-              as={Link}
-              to="/"
-              name="home"
-              active={activeItem === "home"}
-              onClick={(e, { name }) => handleItemClick(name)}
-            />
-            <Menu.Item
-              as={Link}
-              to="/about"
-              name="about"
-              active={activeItem === "about"}
-              onClick={(e, { name }) => handleItemClick(name)}
-            />
-            <Menu.Item
-              as={Link}
-              to="/contact"
-              name="contact"
-              active={activeItem === "contact"}
-              onClick={(e, { name }) => handleItemClick(name)}
-            />
-            <Menu.Item
-              as={Link}
-              to="/contact-reducer"
-              name="contact Reducer"
-              active={activeItem === "contactR"}
-              onClick={(e, { name }) => handleItemClick(name)}
-            />
-            <Menu.Item
-              as={Link}
-              to="/contact-details"
-              name="contact Details"
-              active={activeItem === "contactDetails"}
-              onClick={(e, { name }) => handleItemClick(name)}
-            />
-            <Menu.Menu position="right">
-              <Menu.Item>
-                <Input icon="search" placeholder="Search..." />
-              </Menu.Item>
+      <ContactProvider>
+        <Container>
+          <BrowserRouter>
+            <Menu secondary>
               <Menu.Item
-                name="logout"
-                active={activeItem === "logout"}
-                onClick={handleItemClick}
+                as={Link}
+                to="/"
+                name="home"
+                active={activeItem === "home"}
+                onClick={(e, { name }) => handleItemClick(name)}
               />
-            </Menu.Menu>
-          </Menu>
+              <Menu.Item
+                as={Link}
+                to="/about"
+                name="about"
+                active={activeItem === "about"}
+                onClick={(e, { name }) => handleItemClick(name)}
+              />
+              <Menu.Item
+                as={Link}
+                to="/contact"
+                name="contact"
+                active={activeItem === "contact"}
+                onClick={(e, { name }) => handleItemClick(name)}
+              />
+              <Menu.Item
+                as={Link}
+                to="/contact-reducer"
+                name="contact Reducer"
+                active={activeItem === "contact Reducer"}
+                onClick={(e, { name }) => handleItemClick(name)}
+              />
+              <Menu.Item
+                as={Link}
+                to="/contact-formik"
+                name="contact Formik"
+                active={activeItem === "contact Formik"}
+                onClick={(e, { name }) => handleItemClick(name)}
+              />
+              <Menu.Item
+                as={Link}
+                to="/contact-details"
+                name="contact Details"
+                active={activeItem === "contact Details"}
+                onClick={(e, { name }) => handleItemClick(name)}
+              />
+              <Menu.Menu position="right">
+                <Menu.Item>
+                  <Input icon="search" placeholder="Search..." />
+                </Menu.Item>
+                <Menu.Item
+                  name="logout"
+                  active={activeItem === "logout"}
+                  onClick={handleItemClick}
+                />
+              </Menu.Menu>
+            </Menu>
 
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="about" element={<Aboutus />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="contact-reducer" element={<ContactUseReducer />} />
-            <Route path="contact-details" element={<ContactDetails />} />
-          </Routes>
-        </BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="about" element={<Aboutus />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="contact-reducer" element={<ContactUseReducer />} />
+              <Route path="contact-details" element={<ContactDetails />} />
+              <Route path="contact-formik" element={<ContactFormik />} />
+            </Routes>
+          </BrowserRouter>
 
-        {/* <BrowserRouter>
-      <Menu>
-        <Link to="/">
-          <Menu.Item>Home</Menu.Item>
-        </Link>
-        <Link to="/about">
-          <Menu.Item>About</Menu.Item>
-        </Link>
-        <Link to="/contact">
-          <Menu.Item>Contact</Menu.Item>
-        </Link>
-      </Menu>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter> */}
-      </Container>
+          {/* <BrowserRouter>
+        <Menu>
+          <Link to="/">
+            <Menu.Item>Home</Menu.Item>
+          </Link>
+          <Link to="/about">
+            <Menu.Item>About</Menu.Item>
+          </Link>
+          <Link to="/contact">
+            <Menu.Item>Contact</Menu.Item>
+          </Link>
+        </Menu>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter> */}
+        </Container>
+      </ContactProvider>
     </>
   );
 }
