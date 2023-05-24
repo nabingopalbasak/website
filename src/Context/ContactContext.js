@@ -20,7 +20,7 @@ const ContactProvider = ({children}) => {
            type: SET_CONTACT_DATA,
            payload: { data: data },
          });
-         console.log("dispatch : ",state)
+         console.log("dispatch : ",state,data)
      };
 
      const getAllContacts = () => {
